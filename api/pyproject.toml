@@ -11,6 +11,12 @@ dependencies = [
   "fastapi==0.88.0",
   "uvicorn==0.20.0",
   "PyYAML==6.0",
+  "fastaws==0.0.8",
+  "pinecone-client==2.2.1",
+  "tenacity==8.2.2",
+  "arrow==1.2.3",
+  "tiktoken==0.3.3",
+  "openai==0.27.4",
 ]
 
 [tool.ipdb]
