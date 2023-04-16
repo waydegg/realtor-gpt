@@ -1,19 +1,14 @@
-import json
-from typing import List, Literal
+from typing import List
 
-from fastapi import APIRouter, Body, Depends, HTTPException, Query, Request
+from fastapi import APIRouter, Body, Depends, HTTPException, Query
 from fastpg.core import Connection
-from httpx import AsyncClient
-from ipdb import set_trace
 
 from api.datastore.pinecone import PineconeDataStore
-from api.dependencies import get_client, get_conn
-from api.models.api import (DeleteRequest, DeleteResponse, QueryRequest,
-                            QueryResponse, UpsertRequest, UpsertResponse)
-from api.settings import settings
+from api.dependencies import get_conn
+from api.models.api import (QueryRequest, QueryResponse)
 from api.utils import filter_null_params
 
-from .models import Listing, ListingSearchBody
+from .models import Listing
 from .service import get_many
 
 # from api.datastore.factory import get_datastore

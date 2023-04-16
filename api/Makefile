@@ -15,5 +15,5 @@ dev:
 .PHONY: build
 build:
 	autoflake --remove-all-unused-imports --recursive --in-place src/api
-	docker build -t openai-plugin/api . 
+	docker build -t realtor-gpt/api . 
 

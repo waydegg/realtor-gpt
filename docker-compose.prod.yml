@@ -1,0 +1,58 @@
+services:
+  realtor-gpt-db:
+    container_name: realtor-gpt-db
+    image: postgres:15.1
+    expose:
+      - 5432
+    environment:
+      POSTGRES_USER: ${POSTGRES_ADMIN_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - realtor-gpt-db-data:/var/lib/postgresql/data
+    restart: unless-stopped
+    shm_size: 512mb
+    networks:
+      - default
+
+  realtor-gpt-api:
+    container_name: realtor-gpt-api
+    image: realtor-gpt/api
+    expose:
+      - 8000
+    environment:
+      OS_ENV: docker
+      BUILD_ENV: production
+      POSTGRES_USER: ${POSTGRES_ADMIN_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD}
+      POSTGRES_HOST: "realtor-gpt-db"
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: ${POSTGRES_DB}
+      WASABI_ACCESS_KEY: ${WASABI_ACCESS_KEY}
+      WASABI_SECRET_KEY: ${WASABI_SECRET_KEY}
+      WASABI_REGION: ${WASABI_REGION}
+      PINECONE_ENVIRONMENT: ${PINECONE_ENVIRONMENT}
+      PINECONE_API_KEY: ${PINECONE_API_KEY}
+      PINECONE_INDEX: ${PINECONE_INDEX}
+      MAPBOX_TOKEN: ${MAPBOX_TOKEN}
+      PLUGIN_HOSTNAME: "https://realtor-gpt.wayde.gg"
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+    restart: unless-stopped
+    networks:
+      - default
+      - vps-traefik-public
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.realtor-gpt-api.rule=Host(`realtor-gpt.wayde.gg`)"
+      - "traefik.http.routers.realtor-gpt-api.entrypoints=websecure"
+      - "traefik.http.routers.realtor-gpt-api.tls.certresolver=letsencryptresolver"
+    depends_on:
+      - realtor-gpt-db
+
+volumes:
+  realtor-gpt-db-data:
+
+networks:
+  default:
+  vps-traefik-public:
+    external: true

@@ -7,4 +7,4 @@ then
   exit 1
 fi
 
-gunzip < $BACKUP_FILE | docker exec -i realator-gpt-db psql -U $POSTGRES_ADMIN_USER -d $POSTGRES_DB
+gunzip < $BACKUP_FILE | docker exec -i realtor-gpt-db psql -U $POSTGRES_ADMIN_USER -d $POSTGRES_DB

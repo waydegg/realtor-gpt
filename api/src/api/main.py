@@ -41,7 +41,7 @@ async def shutdown():
 
 @app.get("/logo.png")
 async def get_logo():
-    return FileResponse("assets/logo.png", media_type="image/png")
+    return FileResponse("logo.png", media_type="image/png")
 
 
 @app.get("/.well-known/ai-plugin.json")
@@ -56,8 +56,8 @@ async def get_plugin_manifest():
 @app.get("/.well-known/openapi.yaml")
 async def get_plugin_spec():
     openapi_schema_json = get_openapi(
-        title="AI Real Estate Agent",
-        description="Get stats for apartment listings in San Francisco, California",
+        title="RealtorGPT",
+        description="Find the best apartments and homes to rent in San Francisco",
         version="v1",
         routes=[*app.routes, *listing_router.routes],
     )

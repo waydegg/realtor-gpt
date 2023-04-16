@@ -1,9 +1,9 @@
 {
   "schema_version": "v1",
-  "name_for_human": "AI Real Estate Agent",
-  "name_for_model": "ai_real_estate_agent",
-  "description_for_human": "Plugin for finding an apartment in San Francisco",
-  "description_for_model": "Plugin for finding an apartment in San Francisco",
+  "name_for_human": "RealtorGPT",
+  "name_for_model": "realtor_gpt",
+  "description_for_human": "Plugin for finding apartments in San Francisco and points of interest",
+  "description_for_model": "Plugin for finding apartments in San Francisco and points of interest",
   "auth": {
     "type": "none"
   },

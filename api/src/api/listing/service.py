@@ -1,4 +1,3 @@
-import json
 
 from fastpg import Connection
 
