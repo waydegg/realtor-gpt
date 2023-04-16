@@ -1,0 +1,10 @@
+#!/bin/sh -e
+
+BACKUP_FILE=$1
+if [ -z $BACKUP_FILE ]
+then
+  echo "must specify a backup file"
+  exit 1
+fi
+
+gunzip < $BACKUP_FILE | docker exec -i realator-gpt-db psql -U $POSTGRES_ADMIN_USER -d $POSTGRES_DB

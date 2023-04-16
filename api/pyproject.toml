@@ -1,0 +1,17 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "api"
+version = "0.0.1"
+requires-python = ">=3.10"
+dependencies = [
+  "fastpg==0.0.5",
+  "fastapi==0.88.0",
+  "uvicorn==0.20.0",
+  "PyYAML==6.0",
+]
+
+[tool.ipdb]
+context = 10

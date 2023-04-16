@@ -1,0 +1,18 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "AI Real Estate Agent",
+  "name_for_model": "ai_real_estate_agent",
+  "description_for_human": "Plugin for finding an apartment in San Francisco",
+  "description_for_model": "Plugin for finding an apartment in San Francisco",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "PLUGIN_HOSTNAME/.well-known/openapi.yaml",
+    "is_user_authenticated": false
+  },
+  "logo_url": "PLUGIN_HOSTNAME/logo.png",
+  "contact_email": "wayde@fireplace.so",
+  "legal_info_url": "https://openai.com/policies/plugin-terms"
+}

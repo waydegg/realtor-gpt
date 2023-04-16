@@ -1,0 +1,6 @@
+#!/bin/sh -e
+
+mkdir -p backups
+BACKUP_FILE=backups/dump_$(date -u +%s).gz
+docker exec -t db pg_dumpall -c -U $POSTGRES_ADMIN_USER | gzip > $BACKUP_FILE
+echo $BACKUP_FILE

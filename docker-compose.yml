@@ -1,0 +1,17 @@
+services:
+  realator-gpt-db:
+    container_name: realator-gpt-db
+    image: postgres:15.1
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_ADMIN_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - realator-gpt-db-data:/var/lib/postgresql/data
+    restart: unless-stopped
+    shm_size: 512mb
+
+volumes:
+  realator-gpt-db-data:

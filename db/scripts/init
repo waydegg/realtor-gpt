@@ -1,0 +1,3 @@
+#!/bin/sh -e
+
+psql -f schema.sql ${POSTGRES_DSN}
